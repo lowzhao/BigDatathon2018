@@ -98,6 +98,10 @@ toCSV('JS1001','2017')
 
 
 
+CSV -> code Array
+for item in codeArr:
+	crawlCode(item)
+	
 
 
 
