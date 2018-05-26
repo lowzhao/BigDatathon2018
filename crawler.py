@@ -16,6 +16,7 @@ while(len(dse_score) > count ):
 	dse_arr.append(dse_score[count:count + 10])
 	count +=10
 
+<<<<<<< HEAD
 dataset = []
 
 
@@ -26,6 +27,12 @@ for index in range(0,len(dse_arr)):
 	dataset.append(data)
 print(dataset)
 # print(dse_arr)
+=======
+
+
+
+print(dse_arr)
+>>>>>>> daf9abc1f23a2a89ee8e252285002d02ed2f66b6
 
 
 
