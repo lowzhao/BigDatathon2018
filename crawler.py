@@ -16,7 +16,16 @@ while(len(dse_score) > count ):
 	dse_arr.append(dse_score[count:count + 10])
 	count +=10
 
-print(dse_arr)
+dataset = []
+
+
+for index in range(0,len(dse_arr)):
+	data = {}
+	data['band'] = dse_arr[index][1]
+	data['best5'] = dse_arr[index][-3]
+	dataset.append(data)
+print(dataset)
+# print(dse_arr)
 
 
 
