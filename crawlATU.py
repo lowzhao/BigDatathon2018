@@ -56,22 +56,28 @@ def searchAll():
 		searchUni(num)
 
 
-def searchUni(uni):
+# def searchUni(uni):
+# 	for num in range(2012,2018)
+# 		searchYear(uni,num)
+
+
+# def searchYear(uni,year):
+# 	yearResponse = request.get('http://atu.hk/get_programmes.ajax.php?inst='+uni+'&year='+year)
+# 	tempcodes = json.loads(yearResponse.text)
+# 	for item in tempcodes :
+# 		# item[0] == code
+# 		# item[1] == name
+# 		# year == year
+# 		for item2 in AllCodes:
+# 			if item2['code'] == item[0]:
+# 				item2['year'].append(year)
+# 				item2['name'].append(item[1])
+
+
+
+def crawlCode(code):
 	for num in range(2012,2018)
-		searchYear(uni,num)
-
-
-def searchYear(uni,year):
-	yearResponse = request.get('http://atu.hk/get_programmes.ajax.php?inst='+uni+'&year='+year)
-	tempcodes = json.loads(yearResponse.text)
-	for item in tempcodes :
-		# item[0] == code
-		# item[1] == name
-		# year == year
-		for item2 in AllCodes:
-			if item2['code'] == item[0]:
-				item2['year'].append(year)
-				item2['name'].append(item[1])
+		toCSV(code,year)
 
 
 # http://atu.hk/get_programmes.ajax.php?inst=2&year=2016
