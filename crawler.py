@@ -8,11 +8,16 @@ soup = BeautifulSoup(response.content, 'html.parser')
 dse_score = soup.find_all('td')
 dse_score = [item.text for item in dse_score]
 
+
 dse_arr = []
 
-while(len(dse_score)>=0):
+while(len(dse_score) > 0):
     dse_arr.append(dse_score[0:10])
-    for items in dse_arr:
-        
+    
+
+print(dse_arr)
+
+
+
 
 
