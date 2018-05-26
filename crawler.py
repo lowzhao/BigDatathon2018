@@ -10,10 +10,11 @@ dse_score = [item.text for item in dse_score]
 
 
 dse_arr = []
+count = 0
 
-while(len(dse_score) > 0):
-    dse_arr.append(dse_score[0:10])
-    
+while(len(dse_score) > count ):
+	dse_arr.append(dse_score[count:count + 10])
+	count +=10
 
 print(dse_arr)
 
