@@ -1,0 +1,517 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type='text/javascript'>
+    google.load('visualization', '1', {packages:['corechart','table']});
+    google.setOnLoadCallback(drawChartMostAdmittedInst);
+    google.setOnLoadCallback(drawChartMostAdmittedProgrammes);
+    google.setOnLoadCallback(drawTableMedian);
+    google.setOnLoadCallback(drawTableMean);
+    function drawChartMostAdmittedInst() {
+        var data = google.visualization.arrayToDataTable([
+          ['Institution', 'Total'],
+          ["CUHK", 403],["HKU", 389],["POLYU", 381],["CITYU", 358],["HKUST", 195],["HKBU", 97],["OUHK", 91],["SSSDP", 67],["LU", 58],["HKIE", 45]
+        ]);
+
+        var options = {
+          title: 'Most Admitted Institutions',
+          is3D: true
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_most_admitted_inst'));
+        chart.draw(data, options);
+    }
+    function drawChartMostAdmittedProgrammes() {
+        var data = google.visualization.arrayToDataTable([
+          ['Programme', 'Total'],
+          ["(HKUST) Engineering", 62],["(HKU) Bachelor of Engineering", 57],["(CUHK) Engineering", 53],["(CUHK) Science", 45],["(HKU) Bachelor of Science", 40],["(HKU) Bachelor of Arts", 39],["(HKU) Bachelor of Medicine and Bachelor of Surgery", 39],["(HKUST) Science", 37],["(HKUST) Business and Management", 35],["(POLYU) BSc (Hons) in Nursing", 34]
+        ]);
+
+        var options = {
+          title: 'Most Reported Programmes',
+          is3D: true
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_most_admitted_programmes'));
+        chart.draw(data, options);
+    }
+    function drawTableMedian() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '院校');
+        data.addColumn('string', '課程');
+        data.addRows([
+          ["CUHK", "Medicine (MBChB) Programme Global Physician-Leadership Stream (GPS)"],["CUHK", "Global Business Studies"],["HKU", "Bachelor of Medicine and Bachelor of Surgery"],["CUHK", "Medicine (MBChB) Programme"],["HKUST", "BSc Quantitative Finance"],["HKUST", "International Research Enrichment"],["HKU", "Bachelor of Dental Surgery"],["HKU", "Bachelor of Chinese Medicine"],["HKU", "Bachelor of Business Administration (Law) and Bachelor of Laws (double degree)"],["CUHK", "Quantitative Finance and Risk Management Science"]
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('chart_median'));
+        table.draw(data, {showRowNumber: true, sort: 'disable'});
+    }
+    function drawTableMean() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '院校');
+        data.addColumn('string', '課程');
+        data.addRows([
+          ["CUHK", "Medicine (MBChB) Programme Global Physician-Leadership Stream (GPS)"],["CUHK", "Global Business Studies"],["HKU", "Bachelor of Medicine and Bachelor of Surgery"],["CUHK", "Medicine (MBChB) Programme"],["HKU", "Bachelor of Dental Surgery"],["HKUST", "International Research Enrichment"],["HKUST", "BSc Quantitative Finance"],["CUHK", "Quantitative Finance and Risk Management Science"],["CUHK", "Pharmacy"],["HKU", "Bachelor of Business Administration (Law) and Bachelor of Laws (double degree)"]
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('chart_mean'));
+        table.draw(data, {showRowNumber: true, sort: 'disable'});
+    }
+</script>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta name="keywords" content="admission grades,jupas discussion,334,dse,al,main round analytics,university,exam">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="shortcut icon" href="favicon.ico"> 
+    <link rel="icon" type="image/ico" href="favicon.ico">
+	<!-- fb meta begin -->
+	<meta property="og:title" content="ATUHK - Admission To University" />
+	<meta property="og:type" content="non_profit" />
+	<meta property="og:url" content="http://atu.hk" />
+	<meta property="og:image" content="http://atu.hk/images/logo.png" />
+	<meta property="og:site_name" content="ATUHK - Admission To University" />
+	<meta property="og:description" content="Statistical data of admission grades from JUPAS applicants" />
+	<!-- fb meta end -->
+	<title>JS1204 / BSc Computer Science - 2017 HKDSE Reported Admission Grades - ATUHK</title>
+	<link href="./jscss/default.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="./jscss/menu_en.css" media="all" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="./jscss/jquery.js"></script>
+	<script type="text/javascript" src="./jscss/common.js"></script>
+	<link href="./jscss/signin.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="./jscss/adm.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="./jscss/g_table.css" media="all" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="./jscss/jquery.blockUI.js"></script>
+<link rel="stylesheet" href="http://atu.hk/results/2013/tipsy.css" type="text/css" media="all" />
+<script type="text/javascript" src="http://atu.hk/results/2013/jquery.tipsy.js"></script>
+
+	<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-42963362-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+
+	</script>
+</head>
+
+<body>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+  <script src="jscss/jquery.cookie.js"></script>
+    
+	<div id="attention"><a href="notice-20130803.php">Attention</a></div>
+	<div id="container">
+		<div id="wrap">
+			<div id="header">
+                <div class="top-logo">
+				<a href="./"><img src="./images/logo.png" border="0" alt="ATUHK" /></a>
+				</div>
+				<div class="nav">
+				
+					<fieldset id="signin_menu">
+						<form method="post" id="signin" action="./login.php">
+							<input type="hidden" name="l_submit" value="yes" />
+							<input type="hidden" name="l_return_url" value="/adm-grades.php?programme=JS1204&amp;year=2017/results/2017/cache/1.php" />
+							<p>
+								<label for="username">Username</label>
+								<input id="username" name="l_username" value="" title="username" tabindex="4" type="text">
+							</p>
+							<p>
+								<label for="password">Password</label>
+								<input id="password" name="l_pwd" value="" title="password" tabindex="5" type="password">
+							</p>
+							<p class="remember">
+								<input id="signin_submit" value="Sign In" tabindex="6" type="submit">
+								<input id="remember" name="l_remme" value="yes" tabindex="7" type="checkbox">
+								<label for="remember">Remember me</label>
+							</p>
+						</form>
+					</fieldset>
+					
+					<ul>
+						<li class="contact"><a href="./contactus.php">Contact Us</a></li>
+						<li class="signup">
+						<div id="topnav" class="topnav"> <a href="./register.php">Register</a> <a href="login" class="signin"><span>Sign In</span></a> </div></li>
+						
+					</ul>
+					<div class="clear"></div>
+					<div id="fb-likes">
+						<form action="http://www.google.com.hk/cse" id="cse-search-box">
+							<div>
+								<input type="hidden" name="cx" value="partner-pub-8232070624201251:qqf7us7up09" />
+								<input type="hidden" name="ie" value="ISO-8859-1" />
+								<input type="text" name="q" size="20" />
+								<input type="submit" name="sa" class="but3" value="Search" />
+							</div>
+						</form>
+
+						<script type="text/javascript" src="http://www.google.com.hk/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+						<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fatu.hk&layout=button_count&show_faces=0&width=95&height=24&locale=zh_HK" frameborder="0" scrolling="no" style="width:95px;height:24px;"></iframe>
+					</div>	
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div id="menu">
+				<div class="lc"></div>
+				<div class="a_menu">
+					<ul>
+						<li><a href="./index.php">HOME</a></li>
+						<li class="current"><a href="./adm-grades.php">ADMISSION GRADES</a></li>
+						<!--<li><a href="./search.php">PROGRAMME SEARCH</a></li>-->
+						<li><a href="./rc.php">RESOURCES</a></li>
+						<li><a href="./discussion.php">DISCUSSION</a></li>
+						<li><a href="./archives.php">PAST YEAR ARCHIVES</a></li>
+						<li><a href="./contactus.php">CONTACT US</a></li>
+					</ul>
+				</div>
+				<div class="rc"></div>
+				<div class="clear"></div>
+			</div>
+		
+			
+			<!--
+			<div style="font-weight:bold; font-size:16px; color: red; padding:  10px;">
+				<a href="/2017">請按這裡進入2017 JUPAS 放榜特輯, 及懇請你們提供資料, 謝謝! </a>
+			</div>
+			-->
+
+            
+            <div id="dialog" title="Notification" style="display:none;">
+              <div id="dialog_content">多謝使用ATUHK. 為作資料統計及發送最新消息, 我們希望閣下能填下email 地址 (或以facebook 登入), 謝謝!<p><b>Email: </b><small style="color: gray;">(提交後本提示將不會再顯示)</small>
+              <br /><input type='text' id='email_addr' size="35">
+              <button type="button" id="email_button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">提交</span></button>
+              </p>
+              <hr />
+              以Facebook 登入:
+              <div id="fbbutton" style="margin-top:20px;"><fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button></div>
+              </div>
+            </div><script type="text/javascript">
+			$(document).ready(function() {
+				$.getJSON("results/2017/cache/1.php",function(data) {
+					$("#gradestat").html("<table class=\"data\" style=\"width:300px;border:1px solid;font-size:11px;\"><tbody><tr><th>Calculation Methods</th><th>Max</th><th>Min</th><th>Average</th></tr><tr><td>Best 5 Subjects </td><td><a href=http://atu.hk/adm-grades.php?year=2017&programme=JS1204&dfid="+ data.JS1204.Best5.Maxid + ">" + data.JS1204.Best5.Max +"</a></td><td><a href=http://atu.hk/adm-grades.php?year=2017&programme=JS1204&dfid="+ data.JS1204.Best5.Minid + ">" + data.JS1204.Best5.Min +"</a></td><td>" + data.JS1204.Best5.Average +"</td></tr><tr><td>4 Core + 1 Elective </td><td><a href=http://atu.hk/adm-grades.php?year=2017&programme=JS1204&dfid="+ data.JS1204.c4x1.Maxid + ">" + data.JS1204.c4x1.Max +"</a></td><td><a href=http://atu.hk/adm-grades.php?year=2017&programme=JS1204&dfid="+ data.JS1204.c4x1.Minid + ">" + data.JS1204.c4x1.Min +"</a></td><td>" + data.JS1204.c4x1.Average +"</td></tr><tr><td>4 Core + 2 Electives </td><td><a href=http://atu.hk/adm-grades.php?year=2017&programme=JS1204&dfid="+ data.JS1204.c4x2.Maxid + ">" + data.JS1204.c4x2.Max +"</a></td><td><a href=http://atu.hk/adm-grades.php?year=2017&programme=JS1204&dfid="+ data.JS1204.c4x2.Minid + ">" + data.JS1204.c4x2.Min +"</a></td><td>" + data.JS1204.c4x2.Average +"</td></tr><tr><td>4 Core + 3 Electives </td><td><a href=http://atu.hk/adm-grades.php?year=2017&programme=JS1204&dfid="+ data.JS1204.c4x3.Maxid + ">" + data.JS1204.c4x3.Max +"</a></td><td><a href=http://atu.hk/adm-grades.php?year=2017&programme=JS1204&dfid="+ data.JS1204.c4x3.Minid + ">" + data.JS1204.c4x3.Min +"</a></td><td>" + data.JS1204.c4x3.Average +"</td></tr></tbody></table>");
+					});
+			});
+			</script><!--Rating for this year-->
+<script type="text/javascript">
+    
+    function rate(a,b,c)
+    {
+        $.post("results/2017/rate.ajax.php",{fid:b,type:c},
+        function(b){
+            //alert(b);
+            if(b=="__RATED__")
+                {
+                    alert("You have already rated this")
+                }else if(b=="__TOO_FREQUENT__")
+                {
+                    alert("You rate too fast")
+                }else{
+                    var c=parseInt($(a).text());
+                    $(a).text(c+1)}
+        });
+    }
+
+    $("a.show-blocked-record").click(function()
+    {
+        $(this).parents("tr").hide().next().show()
+    });
+        
+    $("#sort").change(function(){
+            if($(this).val()=="")
+            return false;
+            
+            if(!location.href.match(/&?sort=[^&]+/))
+            {
+                location.href=location.href+"&sort="+$(this).val()
+            }else{ 
+            location.href=location.href.replace(/(&)?sort=([^&]+)/g,"$1"+"sort="+$(this).val())
+            }
+    });
+</script>
+
+            <div id="content">
+                
+                <div id="inner_content">
+                    <h2>Reported Admission Grades (JUPAS 2017 HKDSE)</h2>                    
+                    
+                    <div id="adm-content">
+                            <div class="cap"></div>
+                            <div class="adm-search-wrap">
+                                <div class="adm-search-left">
+                                    <div id="searchbox_wrap">
+                                        <div id="searchbox">
+                                            <p><label>Institution</label>
+                                            <span>
+                                                <select id="inst">
+                                                    <option value="">*Please Select One*</option>
+                                                    <option value="cityu">(CityU) City University of Hong Kong</option>
+                                                    <option value="hkbu">(HKBU) Hong Kong Baptist University</option>
+                                                    <option value="polyu">(PolyU) The Hong Kong Polytechnic University</option>
+                                                    <option value="cuhk">(CUHK) The Chinese University of Hong Kong</option>
+                                                    <option value="hkust">(HKUST) The Hong Kong University of Science and Technology</option>
+                                                    <option value="hku">(HKU) The University of Hong Kong</option>
+                                                    <option value="lu">(LU) Lingnan University    </option>
+                                                    <option value="hkie">(HKIEd) The Hong Kong Institute of Education</option>
+                                                    <option value="ouhk">(OUHK) The Open University of Hong Kong</option>
+                                                    <option value="sssdp">(SSSDP) Study Subsidy Scheme for Designated Professions</option>
+                                                </select>
+                                            </span>
+                                            </p>
+                                            <p><label>Programme</label>
+                                            <span>
+                                                <select id="programme"></select>
+                                            </span>
+                                            </p>
+                                        <div class="clear">&nbsp;</div>
+                                        </div>
+                                    </div>
+                                    <div class="adm-search-bottom">
+                                        <div class="but-set">
+                                            <button class="but2" id="search">Search</button>
+                                            <button class="but2">Reset</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="adm-search-right">
+                                    <p><label>Prog. Code</label><span>JS <input type="text" class="textfield" id="pr_code" size="4" maxlength="4" /></span></p>
+                                </div>
+                            </div>
+                            <div class="cap2"></div>
+                            <div class="cap-white"></div>
+                            <div class="adm-content-main">
+                                            <div id="search_header">
+                <div id="search_header_top">
+                    <div id="programme-stat">
+                    <fieldset><label>Reports</label><span>11</span></fieldset>
+                    <fieldset><label>Gender</label><span>7 male, 4 female</span></fieldset>
+                    </div>
+                </div>
+                <div class="result_caption">
+                    <div class="result_heading">
+                        Result <img src="images/bullet.gif" align="absmiddle" /> <img src="images/uni_logo/cityu.jpg" align="absmiddle" />City University of Hong Kong
+                    </div>
+                    <div class="result_info">
+                        Programme: JS1204 / BSc Computer Science
+                    </div>
+                    <div class="result_info">
+                        Switch to <a href='adm-grades.php?programme=JS1204&year=2016'> 2016 |</a><a href='adm-grades.php?programme=JS1204&year=2015'> 2015 |</a><a href='adm-grades.php?programme=JS1204&year=2014'> 2014 |</a><a href='adm-grades.php?programme=JS1204&year=2013'> 2013 |</a><a href='adm-grades.php?programme=JS1204&year=2012'> 2012 |</a> result of this program</a>
+                        <div id="gradestat"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="f1">
+                        <b>Sort By:</b> 
+						<select id="sort">
+						<option value="latest">Latest records</option>
+						<option value="grade">Grade (Total)</option>
+						<option value="grade_best5">Grade (Best 5)</option>
+						<option value="grade_c4x1">Grade (4 Core + 1 Elective)</option>
+						<option value="grade_c4x2">Grade (4 Core + 2 Elective)</option>
+						<option value="grade_c4x3">Grade (4 Core + 3 Elective)</option>
+						<option value="rating">Rating (High to Low)</option>
+						</select> (Grade Sort is based on sum of all subjects points)
+                    </div>
+                    <div class="f2">
+                        <div class="addthis_toolbox addthis_default_style"><a class="addthis_button_preferred_1"></a><a class="addthis_button_preferred_2"></a><a class="addthis_button_preferred_3"></a><a class="addthis_button_preferred_4"></a><a class="addthis_button_compact"></a>
+                        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-503b750116310f18"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <table class="data" style="font-size:11px;">
+                <tr>
+                    <th width="6%">Record ID</th>
+                    <th width="6%">Banding</th>
+                    <th width="8%">English Language</th>
+                    <th width="8%">Chinese Language</th>
+                    <th width="8%">Mathematics (Core)</th>
+                    <th width="8%">Liberal Studies</th>
+                    <th width="30%">Electives</th>
+                    <th width="*">Best 5</th>
+                    <th width="6%">Remarks</th>
+                    <th width="6%">Rating</th>
+                </tr>
+<tr style="border-top:2px solid #ddd;"><td><a href="adm-grades.php?programme=JS1204&dfid=1757&year=2017" />1757</a></td><td>B5</td><td>4</td><td>3</td><td>4</td><td>4</td><td><div class="electives"><div class="electives-subj">Business, Accounting and Financial Studies</div><div class="electives-grade">4</div></div><div class="electives"><div class="electives-subj">Economics</div><div class="electives-grade">5</div></div></td><td>21</td><td><a href="adm-grades.php?programme=JS1204&dfid=1757&year=2017" />Details</a><span class="viewdetails" style="display:block"><a href="#" title="Best 5:21
+			|| 4C1E:20
+			|| 4C2E:24
+			|| 4C3E:24">Scores</a> <a href="adm-grades.php?programme=JS1204&dfid=1757" title="A1-B4 放哂商科<br />
+CS 冇interview">Note</a></span></td><td><div class="rate rate-good"><a href="javascript:void(0)" onclick="rate(this, 1757, 1)">1</a></div><div class="rate rate-bad"><a href="javascript:void(0)" onclick="rate(this, 1757, 0)">0</a></div></td></tr><tr style="border-top:2px solid #ddd; background-color:#f9f9f9;"><td><a href="adm-grades.php?programme=JS1204&dfid=1608&year=2017" />1608</a></td><td>A1</td><td>3</td><td>3</td><td>4</td><td>4</td><td><div class="electives"><div class="electives-subj">History</div><div class="electives-grade">5</div></div><div class="electives"><div class="electives-subj">Information and Communication Technology</div><div class="electives-grade">5*</div></div></td><td>22</td><td><a href="adm-grades.php?programme=JS1204&dfid=1608&year=2017" />Details</a><span class="viewdetails" style="display:block"><a href="#" title="Best 5:22
+			|| 4C1E:20
+			|| 4C2E:25
+			|| 4C3E:25">Scores</a>&nbsp;</span></td><td><div class="rate rate-good"><a href="javascript:void(0)" onclick="rate(this, 1608, 1)">0</a></div><div class="rate rate-bad"><a href="javascript:void(0)" onclick="rate(this, 1608, 0)">1</a></div></td></tr><tr style="border-top:2px solid #ddd;"><td><a href="adm-grades.php?programme=JS1204&dfid=1563&year=2017" />1563</a></td><td>A1</td><td>4</td><td>4</td><td>5</td><td>4</td><td><div class="electives"><div class="electives-subj">Economics</div><div class="electives-grade">5</div></div><div class="electives"><div class="electives-subj">Chemistry</div><div class="electives-grade">4</div></div></td><td>22</td><td><a href="adm-grades.php?programme=JS1204&dfid=1563&year=2017" />Details</a><span class="viewdetails" style="display:block"><a href="#" title="Best 5:22
+			|| 4C1E:22
+			|| 4C2E:26
+			|| 4C3E:26">Scores</a> <a href="adm-grades.php?programme=JS1204&dfid=1563" title="no interview">Note</a></span></td><td><div class="rate rate-good"><a href="javascript:void(0)" onclick="rate(this, 1563, 1)">1</a></div><div class="rate rate-bad"><a href="javascript:void(0)" onclick="rate(this, 1563, 0)">0</a></div></td></tr><tr style="border-top:2px solid #ddd; background-color:#f9f9f9;"><td><a href="adm-grades.php?programme=JS1204&dfid=1287&year=2017" />1287</a></td><td>A1</td><td>4</td><td>4</td><td>4</td><td>4</td><td><div class="electives"><div class="electives-subj">Business, Accounting and Financial Studies</div><div class="electives-grade">5</div></div><div class="electives"><div class="electives-subj">Economics</div><div class="electives-grade">4</div></div></td><td>21</td><td><a href="adm-grades.php?programme=JS1204&dfid=1287&year=2017" />Details</a><span class="viewdetails" style="display:block"><a href="#" title="Best 5:21
+			|| 4C1E:21
+			|| 4C2E:25
+			|| 4C3E:25">Scores</a> <a href="adm-grades.php?programme=JS1204&dfid=1287" title="no interview">Note</a></span></td><td><div class="rate rate-good"><a href="javascript:void(0)" onclick="rate(this, 1287, 1)">0</a></div><div class="rate rate-bad"><a href="javascript:void(0)" onclick="rate(this, 1287, 0)">1</a></div></td></tr><tr style="border-top:2px solid #ddd;"><td><a href="adm-grades.php?programme=JS1204&dfid=1083&year=2017" />1083</a></td><td>A2</td><td>3</td><td>5</td><td>5</td><td>4</td><td><div class="electives"><div class="electives-subj">Information and Communication Technology</div><div class="electives-grade">4</div></div><div class="electives"><div class="electives-subj">Chinese Literature</div><div class="electives-grade">4</div></div></td><td>22</td><td><a href="adm-grades.php?programme=JS1204&dfid=1083&year=2017" />Details</a><span class="viewdetails" style="display:block"><a href="#" title="Best 5:22
+			|| 4C1E:21
+			|| 4C2E:25
+			|| 4C3E:25">Scores</a>&nbsp;</span></td><td><div class="rate rate-good"><a href="javascript:void(0)" onclick="rate(this, 1083, 1)">0</a></div><div class="rate rate-bad"><a href="javascript:void(0)" onclick="rate(this, 1083, 0)">1</a></div></td></tr><tr style="border-top:2px solid #ddd; background-color:#f9f9f9;"><td><a href="adm-grades.php?programme=JS1204&dfid=850&year=2017" />850</a></td><td>A1</td><td>4</td><td>4</td><td>4</td><td>4</td><td><div class="electives"><div class="electives-subj">Biology</div><div class="electives-grade">4</div></div><div class="electives"><div class="electives-subj">Chemistry</div><div class="electives-grade">4</div></div><div class="electives"><div class="electives-subj">Economics</div><div class="electives-grade">3</div></div></td><td>20</td><td><a href="adm-grades.php?programme=JS1204&dfid=850&year=2017" />Details</a><span class="viewdetails" style="display:block"><a href="#" title="Best 5:20
+			|| 4C1E:20
+			|| 4C2E:24
+			|| 4C3E:27">Scores</a> <a href="adm-grades.php?programme=JS1204&dfid=850" title="N/A">Note</a></span></td><td><div class="rate rate-good"><a href="javascript:void(0)" onclick="rate(this, 850, 1)">0</a></div><div class="rate rate-bad"><a href="javascript:void(0)" onclick="rate(this, 850, 0)">0</a></div></td></tr><tr style="border-top:2px solid #ddd;"><td><a href="adm-grades.php?programme=JS1204&dfid=773&year=2017" />773</a></td><td>A1</td><td>3</td><td>3</td><td>5</td><td>4</td><td><div class="electives"><div class="electives-subj">Information and Communication Technology</div><div class="electives-grade">5*</div></div><div class="electives"><div class="electives-subj">Physics</div><div class="electives-grade">4</div></div></td><td>22</td><td><a href="adm-grades.php?programme=JS1204&dfid=773&year=2017" />Details</a><span class="viewdetails" style="display:block"><a href="#" title="Best 5:22
+			|| 4C1E:21
+			|| 4C2E:25
+			|| 4C3E:25">Scores</a>&nbsp;</span></td><td><div class="rate rate-good"><a href="javascript:void(0)" onclick="rate(this, 773, 1)">0</a></div><div class="rate rate-bad"><a href="javascript:void(0)" onclick="rate(this, 773, 0)">0</a></div></td></tr><tr style="border-top:2px solid #ddd; background-color:#f9f9f9;"><td><a href="adm-grades.php?programme=JS1204&dfid=613&year=2017" />613</a></td><td>A1</td><td>3</td><td>4</td><td>4</td><td>4</td><td><div class="electives"><div class="electives-subj">Chinese History</div><div class="electives-grade">5</div></div><div class="electives"><div class="electives-subj">Economics</div><div class="electives-grade">5*</div></div></td><td>23</td><td><a href="adm-grades.php?programme=JS1204&dfid=613&year=2017" />Details</a><span class="viewdetails" style="display:block"><a href="#" title="Best 5:23
+			|| 4C1E:21
+			|| 4C2E:26
+			|| 4C3E:26">Scores</a>&nbsp;</span></td><td><div class="rate rate-good"><a href="javascript:void(0)" onclick="rate(this, 613, 1)">0</a></div><div class="rate rate-bad"><a href="javascript:void(0)" onclick="rate(this, 613, 0)">0</a></div></td></tr><tr style="border-top:2px solid #ddd;"><td><a href="adm-grades.php?programme=JS1204&dfid=154&year=2017" />154</a></td><td>A2</td><td>4</td><td>4</td><td>4</td><td>4</td><td><div class="electives"><div class="electives-subj">Biology</div><div class="electives-grade">5</div></div><div class="electives"><div class="electives-subj">History</div><div class="electives-grade">4</div></div></td><td>21</td><td><a href="adm-grades.php?programme=JS1204&dfid=154&year=2017" />Details</a><span class="viewdetails" style="display:block"><a href="#" title="Best 5:21
+			|| 4C1E:21
+			|| 4C2E:25
+			|| 4C3E:25">Scores</a> <a href="adm-grades.php?programme=JS1204&dfid=154" title="retaker <br />
+weight 完 29分">Note</a></span></td><td><div class="rate rate-good"><a href="javascript:void(0)" onclick="rate(this, 154, 1)">2</a></div><div class="rate rate-bad"><a href="javascript:void(0)" onclick="rate(this, 154, 0)">1</a></div></td></tr><tr style="border-top:2px solid #ddd; background-color:#f9f9f9;"><td><a href="adm-grades.php?programme=JS1204&dfid=100&year=2017" />100</a></td><td>A3</td><td>4</td><td>3</td><td>4</td><td>4</td><td><div class="electives"><div class="electives-subj">Chemistry</div><div class="electives-grade">5</div></div><div class="electives"><div class="electives-subj">Biology</div><div class="electives-grade">4</div></div><div class="electives"><div class="electives-subj">Physics</div><div class="electives-grade">4</div></div></td><td>21</td><td><a href="adm-grades.php?programme=JS1204&dfid=100&year=2017" />Details</a><span class="viewdetails" style="display:block"><a href="#" title="Best 5:21
+			|| 4C1E:20
+			|| 4C2E:24
+			|| 4C3E:28">Scores</a> <a href="adm-grades.php?programme=JS1204&dfid=100" title="放榜前無擺band A, 放榜後擺A3無interview<br />
+(印象中我weighted完meet上年median&amp;lq)">Note</a></span></td><td><div class="rate rate-good"><a href="javascript:void(0)" onclick="rate(this, 100, 1)">0</a></div><div class="rate rate-bad"><a href="javascript:void(0)" onclick="rate(this, 100, 0)">0</a></div></td></tr><tr style="border-top:2px solid #ddd;"><td><a href="adm-grades.php?programme=JS1204&dfid=60&year=2017" />60</a></td><td>A1</td><td>3</td><td>4</td><td>5</td><td>4</td><td><div class="electives"><div class="electives-subj">Information and Communication Technology</div><div class="electives-grade">5</div></div><div class="electives"><div class="electives-subj">Chinese History</div><div class="electives-grade">4</div></div></td><td>22</td><td><a href="adm-grades.php?programme=JS1204&dfid=60&year=2017" />Details</a><span class="viewdetails" style="display:block"><a href="#" title="Best 5:22
+			|| 4C1E:21
+			|| 4C2E:25
+			|| 4C3E:25">Scores</a> <a href="adm-grades.php?programme=JS1204&dfid=60" title="Retaker黎 上年2016 DSE 43345(ICT) 4(中史）報過但入唔到 今年retake MATH Lv3--&gt;Lv5 無Interview直入<br />
+<br />
+基本上weighting 完夠28分就入硬(4+2)英文*2">Note</a></span></td><td><div class="rate rate-good"><a href="javascript:void(0)" onclick="rate(this, 60, 1)">3</a></div><div class="rate rate-bad"><a href="javascript:void(0)" onclick="rate(this, 60, 0)">1</a></div></td></tr></table>                                
+                            </div>
+                            <div class="cap2-white"></div>
+                        
+                    </div>
+                    <div id="adm-sidebar">
+                    <h1>HKDSE Records</h1>
+                    <div class="useful-info">
+                        <div class="cat-content">
+                            <ul id="archive">
+                                    <li><a href="adm-grades.php?year=2017">JUPAS 2017 HKDSE</a></li>
+                                    <li><a href="adm-grades.php?year=2016">JUPAS 2016 HKDSE</a></li>
+                            		<li><a href="adm-grades.php?year=2015">JUPAS 2015 HKDSE</a></li>
+                            		<li><a href="adm-grades.php?year=2014">JUPAS 2014 HKDSE</a></li>
+                            		<li><a href="adm-grades.php?year=2013">JUPAS 2013 HKDSE</a></li>
+                            		<li><a href="adm-grades.php?year=2012">JUPAS 2012 HKDSE</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="adm-sidebar" style="margin-top:10px;">
+                    <h1>HKALE Records</h1>
+                    <div class="useful-info">
+                        <div class="cat-content">
+                            <ul id="archive">
+                                <li><a href="archives.php?cmd=adm-12-hkale">JUPAS 2012 HKALE</a></li>
+                                <li><a href="archives.php?cmd=adm-11-hkale">JUPAS 2011 HKALE</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--
+                    <h1>Admission Grades</h1>
+                    <div class="useful-info">
+                        <div class="cat-content">
+                            <ul>
+                                <li>CityU (<a href="#">AL</a>, <a href="#">DSE</a>)</li>
+                                <li>HKBU (<a href="#">AL</a>, <a href="#">DSE</a>)</li>
+                                <li>PolyU (<a href="#">AL</a>, <a href="#">DSE</a>)</li>
+                                <li>CUHK (<a href="#">AL</a>, <a href="#">DSE</a>)</li>
+                                <li>HKUST (<a href="#">AL</a>, <a href="#">DSE</a>)</li>
+                                <li>HKU (<a href="#">AL</a>, <a href="#">DSE</a>)</li>
+                                <li>LU (<a href="#">AL</a>, <a href="#">DSE</a>)</li>
+                                <li>HKIEd (<a href="#">AL</a>, <a href="#">DSE</a>)</li>
+                                <li>OUHK (<a href="#">AL</a>, <a href="#">DSE</a>)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    -->
+                    <div style="margin-top:15px">
+                    <script language='JavaScript' type='text/javascript'>randomstr = new String (Math.random());randomstr = randomstr.substring(1,8);document.write ("<" + "script language='JavaScript' type='text/javascript' src='" + "http://servedby.adsfactor.net/adj.php?ts=" + randomstr + "&amp;sid=907337455851" + "'><" + "/script>");</script><noscript><a href='http://servedby.adsfactor.net/adc.php?sid=907337455851' ><img src='http://servedby.adsfactor.net/adv.php?sid=907337455851' border='0'></a></noscript>
+                    </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+<script type="text/javascript">
+    var inst = ['cityu', 'hkbu', 'polyu', 'cuhk', 'hkust', 'hku', 'lu', 'hkie', 'ouhk'];
+    $(function() {
+        function selectInst() {
+            var index = $('option:selected', this).index();
+            index > 0 && listprogramme(index);
+        }
+        function listprogramme(_inst) {
+            $('#pr_code').val('');
+            $('select#programme').html('<option value="">Loading...</option>');
+            $.getJSON('./get_programmes.ajax.php', {inst: _inst,year: 2017},
+                function(result) {
+                    $('select#programme').html('<option value=""></option>');
+                    $.each(result, function(i, programme) {
+                        if (programme[0] == '1204') {
+                            $('select#programme').append('<option value="JS'+programme[0]+'" selected>JS'+programme[0]+' / '+programme[1]+'</option>');
+                        } else {
+                            $('select#programme').append('<option value="JS'+programme[0]+'">JS'+programme[0]+' / '+programme[1]+'</option>');
+                        }
+                    });
+                }
+            );
+        }
+
+        $('select#inst').bind('change', selectInst);
+        $('select#programme').change(function() {
+            if ($('option:selected', this).val() == '') { return; }
+        });
+        $('#search').click(function() {
+            if ($('#pr_code').val() != '') {
+                var regexp = /^[1-9][0-9]{3}$/;
+                if (regexp.test($('#pr_code').val())) {
+					
+					var thiscode = $('#pr_code').val();
+					
+					location.href = '?programme=JS'+thiscode+'&year=2017';
+                    
+                }
+            } else {
+                if (!($('select#inst').val() == '' || $('select#programme').val() == '')) {
+                    location.href = '?programme='+$('select#programme option:selected').val()+'&year=2017';
+                }
+            }
+        });
+        var el = $('select#inst option:eq(1)');
+        el.attr('selected', 'selected');
+        listprogramme($('option:selected', $('select#inst')).index());
+        $('#criteria').click(function() {
+            if ($('#searchbox_wrap').css('display') == 'block') {
+                $('#searchbox_wrap').slideUp();
+                $(this).removeClass('boxheader_arrowup').addClass('boxheader_arrowdown');
+            } else {
+                $('#searchbox_wrap').slideDown();
+                $(this).removeClass('boxheader_arrowdown').addClass('boxheader_arrowup');
+            }
+        });
+        $('a.show-blocked-record').click(function() {$(this).parents('tr').hide().next().show();});
+        //$('span [title], img[title]').tipsy({gravity: 's', html: true, opacity:1});
+        $('#sort').change(function() {if ($(this).val() == '') return false;if (!location.href.match(/&?sort=[^&]+/)) {location.href = location.href + '&sort=' + $(this).val();} else {location.href = location.href.replace(/(&)?sort=([^&]+)/g, '$1' + 'sort=' + $(this).val());}});
+    });
+</script>
+			</div>
+		</div>
+		
+		<div id="bottom">
+			<a href="./index.php">Home</a> | <a href="./news.php">News</a> | <a href="./contactus.php">Contact Us</a> | <a href="./disclaimer.php">Disclaimer</a><br />
+			&copy; Copyright 2011-2017 Admission To University All Rights Reserved. Supported By <a href="http://lsforum.net" target=_blank>lsforum.net</a>
+			<br />No portion of ATU.HK may be duplicated, redistributed or manipulated in any form. By accessing any information beyond this page, you agree to abide by the Terms of Use.
+			<br /><a href="http://www.hitwebcounter.com/htmltutorial.php" target="_blank">
+                <img src="http://hitwebcounter.com/counter/counter.php?page=4514303&style=0008&nbdigits=5&type=page&initCount=4500" title="views tracker" Alt="views tracker"   border="0" >
+                </a>
+                <script type="text/javascript">
+var clicky_site_ids = clicky_site_ids || [];
+clicky_site_ids.push(100634613);
+(function() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//static.getclicky.com/js';
+  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+})();
+</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100634613ns.gif" /></p></noscript>
+		</div>
+	</body>
+</html>
