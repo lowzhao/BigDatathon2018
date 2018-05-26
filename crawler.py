@@ -25,6 +25,7 @@ for index in range(0,len(dse_arr)):
 	data['best5'] = dse_arr[index][-3]
 	dataset.append(data)
 print(dataset)
+# print(dse_arr)
 
 
 
