@@ -6,6 +6,8 @@ import os
 
 import json
 
+import math
+
 def toCSV(code,year):
 	try:
 		response = requests.get('http://atu.hk/adm-grades.php?programme='+code+'&year='+year)
@@ -43,16 +45,19 @@ def toCSV(code,year):
 
 		df = pd.DataFrame(dataset,columns=['band','best5'])
 		df.to_csv(code+'_'+year)
-	except Exception as e:
-		excepted = open('excepted','a')
-		excepted.write('http://atu.hk/adm-grades.php?programme='+code+'&year='+year + '\n')
-		excepted.close()
-		print(str(e))
+	except Exception as e2:
+		try : 
+			excepted = open('excepted','a')
+			excepted.write('http://atu.hk/adm-grades.php?programme='+code+'&year='+year + '\n')
+			excepted.close()
+		except Exception as e:
+			print(str(e))
+		print(str(e2))
 
 
 
 def searchAll():
-	for num in range(1,11)
+	for num in range(1,11):
 		searchUni(num)
 
 
@@ -76,18 +81,18 @@ def searchAll():
 
 
 def crawlCode(code):
-	for num in range(2012,2018)
-		toCSV(code,year)
+	for num in range(2012,2018):
+		toCSV(code,str(num))
 
 
 # http://atu.hk/get_programmes.ajax.php?inst=2&year=2016
 
-AllCodes = [{
-	'code':
-	'year':[],
-	'name':[]
-}
-]
+# AllCodes = [{
+# 	'code':
+# 	'year':[],
+# 	'name':[]
+# }
+# ]
 
 toCSV('JS1001','2017')
 # toCSV(url = 'http://atu.hk/adm-grades.php?programme=JS1204&year=2017', filename = 'url.csv')
@@ -98,9 +103,16 @@ toCSV('JS1001','2017')
 
 
 
-CSV -> code Array
-for item in codeArr:
-	crawlCode(item)
+# CSV -> code Array
+
+df = pd.read_csv('KelvinUG_1.csv')
+print(df['Programme Code'])
+
+# codeArr = []
+
+for item in df['Programme Code']:
+	if item != 'NaN':
+		crawlCode(item)
 	
 
 
