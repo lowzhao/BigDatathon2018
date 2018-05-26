@@ -17,8 +17,6 @@ while(len(dse_score) > count ):
 	count +=10
 
 
-
-
 print(dse_arr)
 
 
